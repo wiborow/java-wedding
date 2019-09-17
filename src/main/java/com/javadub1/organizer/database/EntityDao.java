@@ -42,7 +42,7 @@ public class EntityDao {
             }
 
 
-            public <T extends IBaseEntity> List<T> list(Class<T> classT) {
+            public <T extends IBaseEntity> List<T> getAllEntityOfType(Class<T> classT) {
                 List<T> orderList = new ArrayList<>();
 
                         SessionFactory factory = HibernateUtil.getSessionFactory();

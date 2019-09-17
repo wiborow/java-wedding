@@ -13,18 +13,8 @@ import com.javadub1.organizer.model.Person;
                 entityDao = new EntityDao();
             }
 
-            public void addPersonToDatabase(Person personToAdd){
-                entityDao.saveOrUpdate(personToAdd);
-            }
-
             public List<Person> getAllPersons(){
-                return entityDao.list(Person.class);
+                return entityDao.getAllEntityOfType(Person.class);
             }
-
-            public void deletePerson(Long id){
-                Person entityToDelete = entityDao.getById(Person.class, id);
-                entityDao.delete(entityToDelete);
-            }
-
 
         }
