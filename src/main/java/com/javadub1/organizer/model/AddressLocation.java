@@ -18,4 +18,5 @@ public class AddressLocation implements IBaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    String value;
 }
