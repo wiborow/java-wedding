@@ -13,57 +13,60 @@ import java.util.List;
 
 public class EntityDao {
     public void saveOrUpdate(IBaseEntity entity) {
-                SessionFactory factory = HibernateUtil.getSessionFactory();
-                try (Session session = factory.openSession()) {
-                        Transaction transaction = session.beginTransaction();
-                        session.saveOrUpdate(entity);
-                        transaction.commit();
-                    } // try with resources - zamknie sesję (session.close()) automatycznie po
-                // zamknięciu klamry try
-                    }
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        try (Session session = factory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.saveOrUpdate(entity);
+            transaction.commit();
+        } // try with resources - zamknie sesję (session.close()) automatycznie po
+        // zamknięciu klamry try
+    }
 
-            public void delete(IBaseEntity entity) {
-                SessionFactory factory = HibernateUtil.getSessionFactory();
-                try (Session session = factory.openSession()) {
-                        Transaction transaction = session.beginTransaction();
-                        session.delete(entity);
-                        transaction.commit();
-                    } // try with resources - zamknie sesję (session.close()) automatycznie po
-                // zamknięciu klamry try
-                    }
-
-
-            public <T extends IBaseEntity> T getById(Class<T> classT, Long id) {
-                SessionFactory factory = HibernateUtil.getSessionFactory();
-                try (Session session = factory.openSession()) {
-                        T result = session.get(classT, id);
-                        return result;
-                    }
-            }
+    public void delete(IBaseEntity entity) {
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        try (Session session = factory.openSession()) {
+            Transaction transaction = session.beginTransaction();
+            session.delete(entity);
+            transaction.commit();
+        } // try with resources - zamknie sesję (session.close()) automatycznie po
+        // zamknięciu klamry try
+    }
 
 
-            public <T extends IBaseEntity> List<T> getAllEntityOfType(Class<T> classT) {
-                List<T> orderList = new ArrayList<>();
+    public <T extends IBaseEntity> T getById(Class<T> classT, Long id) {
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        try (Session session = factory.openSession()) {
+            T result = session.get(classT, id);
+            return result;
+        }
+    }
 
-                        SessionFactory factory = HibernateUtil.getSessionFactory();
-                try (Session session = factory.openSession()) {
-                        // budowniczy zapytania
-                                CriteriaBuilder builder = session.getCriteriaBuilder();
 
-                                // tworzymy obiekt zawierający kryteria zapytania O OBIEKT Order
-                                        CriteriaQuery<T> criteriaQuery = builder.createQuery(classT);
+    public <T extends IBaseEntity> List<T> getAllEntityOfType(Class<T> classT) {
+        List<T> orderList = new ArrayList<>();
 
-                                // tabela w której będziemy wyszukiwać
-                                        Root<T> table = criteriaQuery.from(classT);
+        SessionFactory factory = HibernateUtil.getSessionFactory();
+        try (Session session = factory.openSession()) {
+            // budowniczy zapytania
+            CriteriaBuilder builder = session.getCriteriaBuilder();
 
-                                // wykonaj zapytanie na tabeli table, użyj kryteriów "criteria query"
-                                        criteriaQuery.select(table);
+            // tworzymy obiekt zawierający kryteria zapytania O OBIEKT Order
+            CriteriaQuery<T> criteriaQuery = builder.createQuery(classT);
 
-                                // wykonaj zapytanie na bazie i wyniki dopisz do listy
-                                        orderList.addAll(session.createQuery(criteriaQuery).list());
-                    }
+            // tabela w której będziemy wyszukiwać
+            Root<T> table = criteriaQuery.from(classT);
 
-                        return orderList;
-            }
+            // wykonaj zapytanie na tabeli table, użyj kryteriów "criteria query"
+            criteriaQuery.select(table);
 
+            // wykonaj zapytanie na bazie i wyniki dopisz do listy
+            orderList.addAll(session.createQuery(criteriaQuery).list());
+        }
+
+        return orderList;
+    }
+
+    public  <T extends IBaseEntity> void deleteById(Class<T> classT, Long id) {
+        delete(getById(classT, id));
+    }
 }

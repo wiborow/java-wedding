@@ -9,7 +9,7 @@
         </property>
         <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="connection.user">root</property>
-        <property name="connection.password">root</property>
+        <property name="connection.password">!Wib23OW</property>
         <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
         <!-- update dopisuje kolumny jeśli brakuje -->
@@ -18,19 +18,18 @@
         <!-- validate - do nothing - zweryfikuj -->
         <!--czy chcesz zebym sam stworzyl baze?-->
         <property name="hbm2ddl.auto">update </property>
-                 <!-- hibernate to data definition language - polityka generowania tabel -->
+        <!-- hibernate to data definition language - polityka generowania tabel -->
         <property name="show_sql">true</property>
 
-                <mapping class="com.javadub1.organizer.model.AddressLocation"/>
-                <mapping class="com.javadub1.organizer.model.ExpenseType"/>
-                <mapping class="com.javadub1.organizer.model.Expense"/>
-                <mapping class="com.javadub1.organizer.model.Person"/>
-                <mapping class="com.javadub1.organizer.model.Invitation"/>
-                <mapping class="com.javadub1.organizer.model.InvitationStatus"/>
-                <mapping class="com.javadub1.organizer.model.InvitationType"/>
-                <mapping class="com.javadub1.organizer.model.Payment"/>
-                <mapping class="com.javadub1.organizer.model.Wedding"/>
-
+        <mapping class="com.javadub1.organizer.model.AddressLocation"/>
+        <mapping class="com.javadub1.organizer.model.ExpenseType"/>
+        <mapping class="com.javadub1.organizer.model.Expense"/>
+        <mapping class="com.javadub1.organizer.model.Person"/>
+        <mapping class="com.javadub1.organizer.model.Invitation"/>
+        <mapping class="com.javadub1.organizer.model.InvitationStatus"/>
+        <mapping class="com.javadub1.organizer.model.InvitationType"/>
+        <mapping class="com.javadub1.organizer.model.Payment"/>
+        <mapping class="com.javadub1.organizer.model.Wedding"/>
 
     </session-factory>
 </hibernate-configuration>

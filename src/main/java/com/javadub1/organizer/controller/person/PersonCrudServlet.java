@@ -2,7 +2,7 @@ package com.javadub1.organizer.controller.person;
 
 import com.javadub1.organizer.service.PersonService;
 
-import javax.servlet.ServletException;
+        import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +27,7 @@ public class PersonCrudServlet extends HttpServlet {
                     } else if("update".equals(actionType)){
                         System.out.println("not implemented yet");
                     } else if("editableForId".equals(actionType)){
-                        resp.sendRedirect("/persons?editable=" +  req.getParameter("id"));
+                        resp.sendRedirect("/persons?editable=" + req.getParameter("id"));
                         return;
                     }
                 resp.sendRedirect("/persons");

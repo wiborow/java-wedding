@@ -3,5 +3,27 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Archetype Created Web Application</display-name>
+    <display-name>Archetype Created Web Application</display-name>
+
+    <filter>
+        <filter-name>loginFilter</filter-name>
+        <filter-class>com.javadub1.organizer.filter.LoginFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>roleFilter</filter-name>
+        <filter-class>com.javadub1.organizer.filter.RoleResolverFilter</filter-class>
+    </filter>
+
+
+    <filter-mapping>
+        <filter-name>loginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>roleFilter</filter-name>
+        <url-pattern>/admin/*</url-pattern>
+    </filter-mapping>
+
 </web-app>
