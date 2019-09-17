@@ -18,7 +18,10 @@ public class Wedding implements IBaseEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @OneToOne(targetEntity = Person.class)
     private Person bride;
+
+    @OneToOne(targetEntity = Person.class)
     private Person groom;
 
     private LocalDate weddingDate;

@@ -17,9 +17,20 @@
         <!-- create-drop przebudowuje bazę (nie tylko tabele) -->
         <!-- validate - do nothing - zweryfikuj -->
         <!--czy chcesz zebym sam stworzyl baze?-->
-        <property name="hbm2ddl.auto"><!-- create -->update
-        </property> <!-- hibernate to data definition language - polityka generowania tabel -->
+        <property name="hbm2ddl.auto">create </property>
+                 <!-- hibernate to data definition language - polityka generowania tabel -->
         <property name="show_sql">true</property>
+
+                <mapping class="com.javadub1.organizer.model.AddressLocation"/>
+                <mapping class="com.javadub1.organizer.model.ExpenseType"/>
+                <mapping class="com.javadub1.organizer.model.Expense"/>
+                <mapping class="com.javadub1.organizer.model.Person"/>
+                <mapping class="com.javadub1.organizer.model.Invitation"/>
+                <mapping class="com.javadub1.organizer.model.InvitationStatus"/>
+                <mapping class="com.javadub1.organizer.model.InvitationType"/>
+                <mapping class="com.javadub1.organizer.model.Payment"/>
+                <mapping class="com.javadub1.organizer.model.Wedding"/>
+
 
     </session-factory>
 </hibernate-configuration>
